@@ -15,7 +15,11 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Landscape" Orientation="Landscape"
     shell:SystemTray.IsVisible="False">
-
+    
+    <!-- The eventual idea is use rtmpdump or ffmpeg to convert a flash stream
+    found using the twitch API to get a video and pipe that into the player framework.
+    Not even sure if the player framework supports this.-->
+    
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <mmppf:MediaPlayer Source="http://ecn.channel9.msdn.com/o9/content/smf/smoothcontent/bbbwp7/big buck bunny.ism/manifest">
@@ -24,5 +28,4 @@
             </mmppf:MediaPlayer.Plugins>
         </mmppf:MediaPlayer>
     </Grid>
-
 </phone:PhoneApplicationPage>
