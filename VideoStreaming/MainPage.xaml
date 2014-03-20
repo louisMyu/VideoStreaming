@@ -22,10 +22,12 @@
     
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        <mmppf:MediaPlayer Source="http://ecn.channel9.msdn.com/o9/content/smf/smoothcontent/bbbwp7/big buck bunny.ism/manifest">
+        <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="109,149,0,0" Tap="Button_Tap"/>
+        <!--<mmppf:MediaPlayer Source="http://ecn.channel9.msdn.com/o9/content/smf/smoothcontent/bbbwp7/big buck bunny.ism/manifest">
             <mmppf:MediaPlayer.Plugins>
                 <adaptive:AdaptivePlugin />
             </mmppf:MediaPlayer.Plugins>
-        </mmppf:MediaPlayer>
+        </mmppf:MediaPlayer>-->
+        
     </Grid>
 </phone:PhoneApplicationPage>

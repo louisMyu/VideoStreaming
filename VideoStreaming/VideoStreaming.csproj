@@ -115,6 +115,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml">
       <SubType>Designer</SubType>
@@ -150,6 +151,9 @@
   <ItemGroup>
     <Reference Include="Microsoft.Web.Media.SmoothStreaming">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Microsoft SDKs\IIS Smooth Streaming Client\v2.0\Windows Phone\Microsoft.Web.Media.SmoothStreaming.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.1\lib\portable-net45+wp80+win8\Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -8,11 +8,16 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using VideoStreaming.Resources;
+using Newtonsoft.Json.Linq;
+using System.Threading;
+using System.IO;
+using System.Text;
 
 namespace VideoStreaming
 {
     public partial class MainPage : PhoneApplicationPage
     {
+        List<string> urlList = new List<string>();
         // Constructor
         public MainPage()
         {
@@ -21,7 +26,42 @@ namespace VideoStreaming
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
         }
+        private void GetStream()
+        {
+            WebRequest request = WebRequest.Create("https://api.twitch.tv/kraken/streams?game=Magic:+The+Gathering");
+            request.BeginGetResponse(GetResponse, request);
+        }
 
+        private void GetResponse(IAsyncResult result)
+        {
+            String responseString = "";
+            WebRequest request = (WebRequest)result.AsyncState;
+            try
+            {
+                WebResponse response = request.EndGetResponse(result);
+                using (System.IO.Stream stream = response.GetResponseStream())
+                {
+                    StreamReader reader = new StreamReader(stream, Encoding.UTF8);
+                    responseString = reader.ReadToEnd();
+                }
+            }
+            catch (WebException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            JObject json = JObject.Parse(responseString);
+            JArray array = (JArray)json["streams"];
+            for (int i = 0; i < array.Count; i++)
+            {
+                string temp = (String)array[i]["channel"]["url"];
+                urlList.Add(temp);
+            }
+        }
+
+        private void Button_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            GetStream();
+        }
         // Sample code for building a localized ApplicationBar
         //private void BuildLocalizedApplicationBar()
         //{
